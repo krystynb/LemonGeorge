@@ -1,9 +1,10 @@
 import os
 import discord
 import random
-from discord.ext import commands
+from discord.ext import commands, tasks
 from dotenv import load_dotenv
 load_dotenv()
+import yt_dlp as youtube_dl 
 
 # retrieve bot token and guild name from .env file
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -11,6 +12,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 #set intents for the bot so it has access to everything
 intents = discord.Intents.all()
+client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='`', intents =intents)
 
 #print what guilds the bot is in, info about all the guild members, loads the cogs
